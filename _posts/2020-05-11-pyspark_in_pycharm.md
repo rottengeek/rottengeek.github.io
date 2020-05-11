@@ -1,4 +1,15 @@
-> 可能在看到这篇文章以前,你或许一直在使用pip install 的方式来安装pyspark，有时会因为安装版本的不一致导致各种各样的错误发生，这里就来讲述一下Spark 的 python 开发环境搭建(注意前提服务器已经配置好spark环境)。
+---
+layout: post
+title: "在Python中使用远程服务器的pyspark"
+author: "Daituodi"
+header-style: text
+tags:
+  - 环境配置
+---
+
+
+
+>  可能在看到这篇文章以前,你或许一直在使用pip install 的方式来安装pyspark，有时会因为安装版本的不一致导致各种各样的错误发生，这里就来讲述一下Spark 的 python 开发环境搭建(注意前提服务器已经配置好spark环境)。
 
 那么开始我们的正题，如何在本地利用pycharm远程使用服务器的pyspark呢？
 
@@ -10,13 +21,13 @@
 
 在Project Interpreter中加入远程解释器地址，配置解释器（Project Interprete）和 路径映射（Path mappings），配置后，我们就可以使用远程的python解释器了，默认是配置后了本地文件和远程文件的自动同步。
 
-![add_interpreter](/Users/rottengeek/Desktop/rottengeek.github.io/img/config_env/config_pyspark/add_interpreter.png)
+![add_interpreter](http://rottengeek.github.io/img/config_env/config_pyspark/add_interpreter.png)
 
 接下来如果我们在PyCharm中输入代码:`import pyspark`
 
 会弹出No module name is ‘pyspark’，我们会发现服务器上 我们使用Python命令行 进入后，`import pyspark`是不会报错的，可是到了本地为什么就报错了呢，是因为服务器上我们配置了pyspark和python解释器的联系，如下图（服务器上/etc/profile，每个的环境配置文件可能不同，如.bash_profile等等）
 
-![etc_profile](/Users/rottengeek/Desktop/rottengeek.github.io/img/config_env/config_pyspark/etc_profile.png)
+![etc_profile](http://rottengeek.github.io/img/config_env/config_pyspark/etc_profile.png)
 
 上面几个环境变量是比较重要的。
 
@@ -24,7 +35,7 @@
 
 （1）点击pycharm工具栏中的Run -> Edit Configurations
 
-![edit_config](/Users/rottengeek/Desktop/rottengeek.github.io/img/config_env/config_pyspark/edit_config.png)
+![edit_config](http://rottengeek.github.io/img/config_env/config_pyspark/edit_config.png)
 
 配置如上所示的环境变量，具体路径可以根据自己的路径来。
 
@@ -34,7 +45,7 @@
 
 现在我们需要把`$SPARK_HOME/python`下的两个必要的目录(就是下图标注的这两个目录) 拷贝在Python安装目录/site-packages这个目录下去，没有`.egg-info`文件也没有关系。
 
-![pyspark_pakage](/Users/rottengeek/Desktop/rottengeek.github.io/img/config_env/config_pyspark/pyspark_pakage.png)
+![pyspark_pakage](http://rottengeek.github.io/img/config_env/config_pyspark/pyspark_pakage.png)
 
 如果不知道如何查看python site-packages的同学可以这样查看， 进入python命令行
 
