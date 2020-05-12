@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "在Python中使用远程服务器的pyspark"
+title: "在Pycharm中使用远程服务器的pyspark"
 author: "Daituodi"
 header-style: text
 tags:
